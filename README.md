@@ -23,12 +23,6 @@ $ cd cf-rec-sys-examples
 $ conda env create -f environment.yml
 ```
 
-**Step 3**: Enable project environment.
-
-```bash
-$ conda activate cf-rec-sys-examples
-```
-
 ## Open notebooks locally
 
 **Step 1**: Enable project environment.
