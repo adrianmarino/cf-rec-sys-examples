@@ -34,19 +34,19 @@ def user_based_rating_predict(rm, user_id, item_id, metric, n_neighbors):
 
 def create_predictors(rm, n_neighbors):
     return {
-        'user_minkowski': lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, 'minkowski', n_neighbors),
-        'user_euclidean': lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, 'euclidean', n_neighbors),
-        'user_cosine':    lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, cosine, n_neighbors),
-        'user_pearson':   lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, correlation, n_neighbors),
-        'user_spearman':   lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, spearman, n_neighbors),
-        'user_manhattan': lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, 'manhattan', n_neighbors),
-        'item_minkowski': lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, 'minkowski', n_neighbors),
-        'item_euclidean': lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, 'euclidean', n_neighbors),
-        'item_manhattan': lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, 'manhattan', n_neighbors),
-        'item_cosine':    lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, cosine, n_neighbors),
-        'item_adj_cosine':lambda user_id, item_id: item_based_adjcos_rating_predict(rm, user_id, item_id, n_neighbors),
-        'item_pearson':   lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, correlation, n_neighbors),
-        'item_spearman':   lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, spearman, n_neighbors)
+        'user_based_with_minkowski': lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, 'minkowski', n_neighbors),
+        'user_based_with_euclidean': lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, 'euclidean', n_neighbors),
+        'user_based_with_cosine':    lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, cosine, n_neighbors),
+        'user_based_with_pearson':   lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, correlation, n_neighbors),
+        'user_based_with_spearman':   lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, spearman, n_neighbors),
+        'user_based_with_manhattan': lambda user_id, item_id: user_based_rating_predict(rm, user_id, item_id, 'manhattan', n_neighbors),
+        'item_based_with_minkowski': lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, 'minkowski', n_neighbors),
+        'item_based_with_euclidean': lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, 'euclidean', n_neighbors),
+        'item_based_with_manhattan': lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, 'manhattan', n_neighbors),
+        'item_based_with_cosine':    lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, cosine, n_neighbors),
+        'item_based_with_adj_cosine':lambda user_id, item_id: item_based_adjcos_rating_predict(rm, user_id, item_id, n_neighbors),
+        'item_based_with_pearson':   lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, correlation, n_neighbors),
+        'item_based_with_spearman':   lambda user_id, item_id: item_based_rating_predict(rm, user_id, item_id, spearman, n_neighbors)
     } 
 
 
