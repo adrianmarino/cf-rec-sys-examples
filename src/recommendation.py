@@ -60,12 +60,12 @@ def metrics_fn(prediction, rm, decimals=3):
         'mse': round(MSE, decimals)
     }
 
-def evaluate(predictors, rm, metrics_fn=metrics_fn):
+def evaluate(predictors, rm, metrics_fn=metrics_fn, decimals=3):
     results = {}
     for name, predictor in predictors.items():
         prediction = pd.DataFrame(np.zeros((rm.n_rows, rm.n_columns)))
 
-        def predict_fn(_, user_id, item_id): prediction[user_id-1][item_id-1] = predictor(user_id, item_id)
+        def predict_fn(_, user_id, item_id): prediction[user_id-1][item_id-1] = predictor(user_id, item_id, decimals)
         rm.for_each(predict_fn)
 
         results[name] = metrics_fn(prediction, rm)
