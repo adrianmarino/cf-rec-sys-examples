@@ -29,10 +29,11 @@ class RatingsMatrix:
         display(self.data)
         return ""
 
-    def for_each(self, for_each_fn):
+    @property
+    def cells(self):
         for user_idx in range(self.n_rows):
             user_id = user_idx + 1
             for item_idx in range(self.n_columns):
                 item_id = item_idx + 1
                 value = self.cell(user_id, item_id)
-                for_each_fn(value, user_id, item_id)
+                yield (value, user_id, item_id)
