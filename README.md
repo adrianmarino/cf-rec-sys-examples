@@ -26,7 +26,7 @@ $ conda env create -f environment.yml
 **Step 3**: Enable project environment.
 
 ```bash
-$ conda activate recommendations
+$ conda activate cf-rec-sys-examples
 ```
 
 ## Open notebooks locally
