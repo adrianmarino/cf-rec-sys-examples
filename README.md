@@ -1,6 +1,6 @@
-# cf-rec-sys-examples
+# Collaborative filtering based RecSys examples
 
-Similarity based RecSys examples.
+Similarity CF based RecSys examples.
 
 ## Sources
 
