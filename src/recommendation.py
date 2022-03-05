@@ -65,9 +65,9 @@ def evaluate(predictors, rm, metrics_fn=metrics_fn, decimals=3):
     for name, predictor in predictors.items():
         prediction = pd.DataFrame(np.zeros((rm.n_rows, rm.n_columns)))
 
-        def predict_fn(_, user_id, item_id): prediction[user_id-1][item_id-1] = predictor(user_id, item_id, decimals)
+        def predict_fn(_, user_id, item_id): prediction[user_id-1][item_id-1] = predictor(user_id, item_id)
         rm.for_each(predict_fn)
 
-        results[name] = metrics_fn(prediction, rm)
+        results[name] = metrics_fn(prediction, rm, decimals)
 
     return results
