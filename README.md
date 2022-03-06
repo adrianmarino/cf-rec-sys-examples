@@ -2,6 +2,8 @@
 
 Similarity CF based RecSys examples.
 
+[Notebook](https://github.com/adrianmarino/cf-rec-sys-examples/blob/master/cf_rec_sys_examples.ipynb)
+
 ## Sources
 
 * [Medium: Collaborative Filtering based Recommendation Systems exemplified..](https://towardsdatascience.com/collaborative-filtering-based-recommendation-systems-exemplified-ecbffe1c20b1)
