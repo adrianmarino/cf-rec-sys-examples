@@ -1,4 +1,4 @@
-# Collaborative filtering based RecSys examples
+# Similarity Collaborative filtering based RecSys examples
 
 Similarity CF based RecSys examples.
 
