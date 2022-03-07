@@ -1,10 +1,10 @@
-def show_similar_items(indices, similarities, item_id, n_neighbors):
-    print(f'{n_neighbors} most similar items to item {item_id}:\n')
+def show_similar_items(indices, similarities, item_id):
+    print(f'{len(similarities)} most similar items to item {item_id}:\n')
     for curr_item_id, sim in zip(indices+1, similarities):
         print(f'- Item ID {curr_item_id}, with similarity of {sim}.')
 
-def show_similar_users(indices, similarities, user_id, n_neighbors):
-    print(f'{n_neighbors} most similar users to user {user_id}:\n')
+def show_similar_users(indices, similarities, user_id):
+    print(f'{len(similarities)} most similar users to user {user_id}:\n')
     for curr_user_id, sim in zip(indices+1, similarities):
         print(f'- User ID {curr_user_id}, with similarity of {sim}.')
 
