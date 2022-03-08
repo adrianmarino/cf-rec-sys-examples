@@ -11,7 +11,7 @@ class SimilarityService(ABC):
 
 class CommonSimilarityService(SimilarityService):
     def __init__(self, rm, metric, n_neighbors, algorithm = 'brute'):
-        self.knn_model = NearestNeighbors(metric = metric, algorithm = algorithm) 
+        self.knn_model = NearestNeighbors(metric = metric, algorithm = algorithm)
         self.knn_model.fit(rm.data)
         self.rm = rm
         self.n_neighbors = n_neighbors
