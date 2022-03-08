@@ -8,13 +8,13 @@ class RatingsMatrix:
         self.data = pd.DataFrame(data)
 
     @staticmethod
-    def from_df(df, columns):
-        n_rows = len(np.unique(df[columns[0]].values))
-        n_columns = len(np.unique(df[columns[1]].values))
+    def from_df(df, rows, columns, value):
+        n_rows = len(np.unique(df[rows].values))
+        n_columns = len(np.unique(df[columns].values))
         matrix = np.zeros((n_rows, n_columns))
 
         for _, row in df.iterrows():
-            matrix[int(row[columns[0]]-1), int(row[columns[1]]-1)] = row[columns[2]]
+            matrix[int(row[rows]-1), int(row[columns]-1)] = row[value]
 
         return RatingsMatrix(matrix)
 
