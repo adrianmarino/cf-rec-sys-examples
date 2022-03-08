@@ -52,8 +52,10 @@ class RatingsMatrix:
                 value = self.cell(user_id, item_id)
                 yield (value, user_id, item_id)
 
-    def plot(self):
-        plt.imshow(self.data, cmap='hot', interpolation='nearest')
+    def plot(self, figsize = (5, 5)):
+        plt.figure(figsize = figsize)
+        plt.imshow(self.data, cmap='hot')
+        plt.colorbar()
         plt.show()
 
     @property
