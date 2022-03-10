@@ -2,8 +2,8 @@ from sklearn.neighbors import NearestNeighbors
 from similarity.service.similarity_service import SimilarityService
 
 class CommonSimilarityService(SimilarityService):
-    def __init__(self, rm, metric, n_neighbors, algorithm = 'brute'):
-        self.knn_model = NearestNeighbors(metric = metric, algorithm = algorithm)
+    def __init__(self, rm, metric, n_neighbors, algorithm = 'brute', n_jobs=None):
+        self.knn_model = NearestNeighbors(metric = metric, algorithm = algorithm, n_jobs=n_jobs)
         self.knn_model.fit(rm.data)
         self.rm = rm
         self.n_neighbors = n_neighbors

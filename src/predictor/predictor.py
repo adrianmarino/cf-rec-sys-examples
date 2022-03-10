@@ -3,30 +3,11 @@ import pandas as pd
 from abc import ABC, abstractmethod
 from sklearn.metrics import mean_squared_error
 from math import sqrt
-from util import ProcessPool
 
 
 def metrics_fn(predictions, true_values, decimals=3):
     MSE = mean_squared_error(predictions, true_values)
     return { 'rmse': round(sqrt(MSE), decimals),  'mse': round(MSE, decimals) }
-
-
-def __predict_fn(n, p, user_id, item_id): 
-    return (n, p.predict(user_id, item_id))
-
-
-def __evaluate_fn(n, p, rm, metrics_fn, decimals): 
-    return (n, p.evaluate(rm, metrics_fn, decimals))
-
-
-def predict(predictors, user_id, item_id, n_processes=24):
-    params  = [(n, p, user_id, item_id) for n, p in predictors.items()]
-    return {n: r for n, r in ProcessPool(n_processes).run(__predict_fn, params)}
-
-
-def evaluate(predictors, rm, metrics_fn=metrics_fn, decimals=3, n_processes=24):
-    params = [(n, p, rm, metrics_fn, decimals) for n, p  in predictors.items()]
-    return {n: r for n, r in ProcessPool(n_processes).run(__evaluate_fn, params)}
 
 
 class AbstractPredictor(ABC):

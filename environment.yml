@@ -1,8 +1,11 @@
 name: cf-rec-sys-examples
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - numpy
   - pandas
   - scipy
   - scikit-learn
+  - jupyterlab
+  - matplotlib

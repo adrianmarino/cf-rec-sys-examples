@@ -1,5 +1,6 @@
 from .impl.adjusted_cosine_item_based_predictor import AdjustedCosineItemBasedPredictor
 from .impl.item_based_predictor import ItemBasedPredictor
 from .impl.user_based_predictor import UserBasedPredictor
-from .predictor import predict, evaluate, AbstractPredictor
+from .predictor import AbstractPredictor
+from .predictor_pool import PredictorPool
 from .predictor_factory import PredictorFactory
