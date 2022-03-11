@@ -1,4 +1,4 @@
-# Similarity CF based RecSys examples
+# Collaborative filtering KNN based recommendation systems examples
 
 Similarity collaborative filtering based RecSys examples.
 

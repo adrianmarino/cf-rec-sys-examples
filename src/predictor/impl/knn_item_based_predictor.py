@@ -2,10 +2,10 @@ from ..predictor import AbstractPredictor
 from similarity import CommonSimilarityService
 
 
-class ItemBasedPredictor(AbstractPredictor):
-    def __init__(self, rm, distance, n_neighbors):
+class KNNItemBasedPredictor(AbstractPredictor):
+    def __init__(self, rm, distance, n_neighbors, algorithm = 'brute', metric_params=None):
         t_rm = rm.T()
-        super().__init__(t_rm, CommonSimilarityService(t_rm, distance, n_neighbors))
+        super().__init__(t_rm, CommonSimilarityService(t_rm, distance, n_neighbors, algorithm, metric_params))
  
     def predict(self, user_id, item_id, decimals=0):
         row_sims, row_indices = self.sim_service.similars(user_id)

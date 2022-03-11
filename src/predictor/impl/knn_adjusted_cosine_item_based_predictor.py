@@ -2,7 +2,7 @@ from ..predictor import AbstractPredictor
 from similarity import AdjustedCosineSimilarityService
 import numpy as np
 
-class AdjustedCosineItemBasedPredictor(AbstractPredictor):
+class KNNAdjustedCosineItemBasedPredictor(AbstractPredictor):
     def __init__(self, rm, n_neighbors):
         super().__init__(rm, AdjustedCosineSimilarityService(rm, n_neighbors))
 

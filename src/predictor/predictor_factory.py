@@ -1,16 +1,34 @@
 from scipy.spatial.distance import cosine
 from similarity import spearman, CommonSimilarityService, AdjustedCosineSimilarityService
 from scipy.spatial.distance import correlation, cosine
-from predictor import ItemBasedPredictor, UserBasedPredictor, AdjustedCosineItemBasedPredictor
+from predictor import KNNItemBasedPredictor, KNNUserBasedPredictor, KNNAdjustedCosineItemBasedPredictor
 from util import ProcessPool
+from sklearn.neighbors import NearestNeighbors, DistanceMetric
+import numpy as np
 
+PREDICTORS = {
+    'knn_cosine_user_based': lambda rm, n_neighbors: KNNUserBasedPredictor(rm, cosine, n_neighbors),
+    'knn_cosine_item_based': lambda rm, n_neighbors: KNNItemBasedPredictor(rm, cosine, n_neighbors),
+ 
+    'knn_pearson_user_based': lambda rm, n_neighbors: KNNUserBasedPredictor(rm, correlation, n_neighbors),
+    'knn_pearson_item_based': lambda rm, n_neighbors: KNNItemBasedPredictor(rm, correlation, n_neighbors),
+    
+    'knn_adj_cosine_item_based': lambda rm, n_neighbors: KNNAdjustedCosineItemBasedPredictor(rm, n_neighbors),
 
-PREDICTORS = { 
-    'user_based_with_cosine': lambda rm, n_neighbors: UserBasedPredictor(rm, cosine, n_neighbors),
-    'user_based_with_pearson': lambda rm, n_neighbors: UserBasedPredictor(rm, correlation, n_neighbors),
-    'item_based_with_cosine': lambda rm, n_neighbors: ItemBasedPredictor(rm, cosine, n_neighbors),
-    'item_based_with_pearson': lambda rm, n_neighbors: ItemBasedPredictor(rm, correlation, n_neighbors),
-    'item_based_with_adj_cosine': lambda rm, n_neighbors: AdjustedCosineItemBasedPredictor(rm, n_neighbors)
+    'knn_euclidean_user_based': lambda rm, n_neighbors: KNNUserBasedPredictor(rm, 'euclidean', n_neighbors),
+    'knn_euclidean_item_based': lambda rm, n_neighbors: KNNItemBasedPredictor(rm, 'euclidean', n_neighbors),
+
+    'knn_minkowski_user_based': lambda rm, n_neighbors: KNNUserBasedPredictor(rm, 'minkowski', n_neighbors),
+    'knn_minkowski_item_based': lambda rm, n_neighbors: KNNItemBasedPredictor(rm, 'minkowski', n_neighbors),
+   
+    'knn_mahalanobis_user_based': lambda rm, n_neighbors: KNNUserBasedPredictor(rm, 'mahalanobis', n_neighbors, algorithm='auto', metric_params = {'VI': np.cov(rm.data, rowvar=False)}),
+    'knn_mahalanobis_item_based': lambda rm, n_neighbors: KNNItemBasedPredictor(rm, 'mahalanobis', n_neighbors, algorithm='auto', metric_params = {'VI': np.cov(rm.data, rowvar=False)}),
+
+    'knn_chebyshev_user_based': lambda rm, n_neighbors: KNNUserBasedPredictor(rm, 'chebyshev', n_neighbors),
+    'knn_chebyshev_item_based': lambda rm, n_neighbors: KNNItemBasedPredictor(rm, 'chebyshev', n_neighbors),
+
+    'knn_manhattan_user_based': lambda rm, n_neighbors: KNNUserBasedPredictor(rm, 'manhattan', n_neighbors),
+    'knn_manhattan_item_based': lambda rm, n_neighbors: KNNItemBasedPredictor(rm, 'manhattan', n_neighbors)   
 }
 
 class PredictorFactory:
@@ -33,4 +51,4 @@ class PredictorFactory:
         return {n: p for n, p in pool.run(self._create_fn, params)}
 
     def create_all(self, rm, n_neighbors):
-        return self.create_many(self.NAMES, rm, n_neighbors)
+        return self.create_many(PredictorFactory.NAMES, rm, n_neighbors)

@@ -7,7 +7,7 @@ from math import sqrt
 
 def metrics_fn(predictions, true_values, decimals=3):
     MSE = mean_squared_error(predictions, true_values)
-    return { 'rmse': round(sqrt(MSE), decimals),  'mse': round(MSE, decimals) }
+    return { 'RMSE': round(sqrt(MSE), decimals),  'MSE': round(MSE, decimals) }
 
 
 class AbstractPredictor(ABC):
