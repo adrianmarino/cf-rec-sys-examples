@@ -16,4 +16,4 @@ class AbstractPredictor(ABC):
         pass
 
     def predict_batch(self, batch, decimals=None):
-        return [self.predict(batch[i][0], batch[i][1]) for i in range(len(batch))]
+        return [self.predict(batch[i][0], batch[i][1], decimals) for i in range(len(batch))]
