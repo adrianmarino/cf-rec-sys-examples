@@ -8,7 +8,8 @@ Similarity collaborative filtering based RecSys examples.
 
 * [Medium: Collaborative Filtering based Recommendation Systems exemplified..](https://towardsdatascience.com/collaborative-filtering-based-recommendation-systems-exemplified-ecbffe1c20b1)
 * This notebook is a fork of: [CF Recommendation System-Examples.ipynb](https://github.com/csaluja/JupyterNotebooks-Medium/blob/master/CF%20Recommendation%20System-Examples.ipynb)
-
+* [Precision@k: The Overlooked Metric for Fraud and Lead Scoring Models](https://towardsdatascience.com/precision-k-the-overlooked-metric-for-fraud-and-lead-scoring-models-fabad2893c01)
+* [Popular evaluation metrics in recommender systems explained](https://medium.com/qloo/popular-evaluation-metrics-in-recommender-systems-explained-324ff2fb427d)
 
 ## Getting started
 

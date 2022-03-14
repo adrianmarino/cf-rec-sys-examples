@@ -15,3 +15,4 @@ class AbstractMetric(ABC):
 
     def _calculate(self, pred_values, true_values, opts={}):
         pass
+
