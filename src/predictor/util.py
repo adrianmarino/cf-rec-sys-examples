@@ -11,4 +11,4 @@ def predict(predictors, user_id, item_id, n_processes=None, decimals=2):
     return pd.DataFrame(
         data=ProcessPool(n_processes).run(predict_fn, params),
         columns=['Predictor', 'Prediction']
-    )
+    ).set_index('Predictor')

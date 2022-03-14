@@ -4,8 +4,12 @@ from util import round_
 
 
 class RecallMetric(AbstractMetric):
-    def __init__(self, decimals=None, average='macro', rating_desimals=0): 
-        super().__init__(f'Recall({average})', decimals)
+    def __init__(self, decimals=None, average='macro', rating_desimals=0):
+        name = f'Recall'
+        if average != 'macro':
+            name += f'({average})'
+ 
+        super().__init__(name, decimals)
         self._average = average
         self._rating_desimals = rating_desimals
 

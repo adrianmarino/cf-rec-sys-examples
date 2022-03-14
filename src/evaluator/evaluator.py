@@ -14,9 +14,9 @@ class Evaluator(ABC):
     def __init__(self, metrics):
         self._metrics = metrics
 
-    def evaluate(self, predictors, rm, decimals=2, n_processes=None):
+    def evaluate(self, predictors, rm, decimals=2, n_processes=None, transpose=False):
         ctx = self._predict(predictors, rm, decimals, n_processes)
-        return self._perform_metrics(rm, ctx)
+        return self._perform_metrics(rm, ctx, transpose)
 
     def _predict(self, predictors, rm, decimals, n_processes):
         ctx = EvaluatorContext(rm)
@@ -30,7 +30,7 @@ class Evaluator(ABC):
 
         return ctx
 
-    def _perform_metrics(self, rm, ctx):
+    def _perform_metrics(self, rm, ctx, transpose):
         data = {}
         for metric in self._metrics:
             for p_name, p_ctx in ctx.predictors.items():
@@ -39,7 +39,8 @@ class Evaluator(ABC):
                     data[p_name] = {}
                 data[p_name][metric.name] = metric_value
 
-        return pd.DataFrame([{'Predictor': p, **metrics} for p, metrics in data.items()])
+        result = pd.DataFrame([{'Predictor': p, **metrics} for p, metrics in data.items()])
+        return result.set_index('Predictor').T if transpose else result
 
     def _to_batch(self, rm):
         batch = []

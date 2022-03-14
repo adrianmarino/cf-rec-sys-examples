@@ -5,9 +5,12 @@ from random import sample
 import logging
 
 class PrecisionMetric(AbstractMetric):
-    def __init__(self, k=10, decimals=None, average='macro', rating_desimals=0): 
-        super().__init__(f'Precision({average})', decimals)
-        self._k = k
+    def __init__(self, decimals=None, average='macro', rating_desimals=0):
+        name = f'Precision'
+        if average != 'macro':
+            name += f'({average})'
+
+        super().__init__(name, decimals)
         self._average = average
         self._rating_desimals = rating_desimals
 
