@@ -61,3 +61,11 @@ class RatingsMatrix:
     @property
     def shape(self):
         return self.data.shape
+
+    def to_batch(self, condition_fn=lambda value: True):
+        batch = []
+        for _, user_id, item_id in self.cells:
+            value = self.cell(user_id, item_id)
+            if condition_fn:
+                batch.append((user_id, item_id, value))
+        return batch
