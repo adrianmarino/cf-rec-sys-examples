@@ -20,7 +20,7 @@ Similarity collaborative filtering based RecSys.
 
 ```bash
 $ git clone https://github.com/adrianmarino/knn-cf-rec-sys.git
-$ cd cf-rec-sys-examples
+$ cd knn-cf-rec-sys
 ```
 
 **Step 2**: Create environment.
