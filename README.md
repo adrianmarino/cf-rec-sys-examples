@@ -1,6 +1,6 @@
-# Collaborative filtering KNN based recommendation systems examples
+# Collaborative filtering KNN based recommendation systems
 
-Similarity collaborative filtering based RecSys examples.
+Similarity collaborative filtering based RecSys.
 
 [Notebook](https://github.com/adrianmarino/cf-rec-sys-examples/blob/master/cf_rec_sys_examples.ipynb)
 
