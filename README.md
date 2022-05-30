@@ -2,7 +2,7 @@
 
 Similarity collaborative filtering based RecSys.
 
-[Notebook](https://github.com/adrianmarino/cf-rec-sys-examples/blob/master/cf_rec_sys_examples.ipynb)
+[Notebook](https://github.com/adrianmarino/cf-rec-sys-examples/blob/master/notebooks/knn-cf-rec-sys.ipynb)
 
 ## Sources
 
@@ -34,7 +34,7 @@ $ conda env create -f environment.yml
 **Step 1**: Enable project environment.
 
 ```bash
-$ conda activate cf-rec-sys-examples
+$ conda activate knn-cf-rec-sys
 ```
 
 **Step 2**: Under project directory boot jupyter lab.

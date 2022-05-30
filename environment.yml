@@ -1,4 +1,4 @@
-name: cf-rec-sys-examples
+name: knn-cf-rec-sys 
 channels:
   - conda-forge
   - defaults
